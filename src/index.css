@@ -10,6 +10,7 @@ body {
 .App {
   margin: 0 auto;
   width: 900px;
+  padding-bottom: 30px;
 }
 .App-header {
   text-align: center;
@@ -29,18 +30,55 @@ body {
 }
 .question {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  cursor: pointer;
+
   width: 100%;
-  background-color: rgb(243, 243, 243);
-  height: 60px;
-  padding: 0 25px 0 25px;
-  box-sizing: border-box;
+  flex-direction: column;
 }
 .question-title {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0 25px 0 25px;
+  height: 60px;
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  transition: 0.2s, height 0.2s;
+}
+.open_title {
+  height: 75px;
+}
+.question-title:hover {
+  background-color: rgb(231, 231, 231);
+}
+.question-text {
   font-size: 25px;
 }
 .arrow {
   width: 10px;
+  transition: 0.2s;
+}
+.arrow_open {
+  transform: rotate(180deg);
+}
+/* @keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+.answer {
+  background-color: rgb(243, 243, 243);
+  height: 40px;
+  padding: 0 25px 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  box-sizing: border-box;
 }

@@ -1,7 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Question from "./components/Questions/Question";
 
 function App() {
+  const dispatch = useDispatch();
+  const questions = useSelector((state) => state.questions);
+  const openQuestion = (idQuestion) => {
+    const openQuestion = questions.filter((q) => q.open === true)[0];
+
+    if (openQuestion) {
+      if (openQuestion.id === idQuestion) {
+        dispatch({ type: "CLOSE" });
+        return;
+      }
+    }
+
+    dispatch({ type: "CLOSE" });
+    dispatch({ type: "OPEN", idQuestion: idQuestion });
+  };
+
   return (
     <div className="App">
       <div className="wrapper">
@@ -12,7 +29,18 @@ function App() {
           </p>
         </header>
         <div className="questions">
-          <Question />
+          {questions.map((question, index) => {
+            return (
+              <Question
+                openCLick={() => openQuestion(question.id)}
+                title={question.title}
+                answer={question.answer}
+                number={index}
+                key={question.id}
+                open={question.open}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
